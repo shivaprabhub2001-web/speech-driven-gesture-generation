@@ -93,8 +93,7 @@ No human perceptual evaluation is reported. The methodological implications of b
 
 ## Dependencies
 
-See `requirements.txt` for the full list. The code was run on the Google Colab runtime (August–September 2026) using its pre-installed library versions; only PyRender is pinned (0.1.45). Main libraries: PyTorch · librosa · HuggingFace Transformers · NumPy · SciPy · pandas · Matplotlib · smplx · trimesh · PyRender · imageio. Rendering also needs FFmpeg (pre-installed on Colab).
-
+See `requirements.txt` for the full list. The code was run on the Google Colab runtime (August–September 2026) using its pre-installed library versions; only PyRender is pinned (0.1.45).
 ## Citation
 
 Liu, H., Zhu, Z., Becherini, G., Peng, Y., Su, M., Zhou, Y., Zhe, X., Iwamoto, N., Zheng, B. and Black, M.J. (2024) 'EMAGE: towards unified holistic co-speech gesture generation via expressive masked audio gesture modeling', *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)*, pp. 1144–1154.
