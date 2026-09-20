@@ -89,11 +89,12 @@ No human perceptual evaluation is reported. The methodological implications of b
 ## Reproducibility
 
 - **v2 (final model):** the seed is fixed at 42 for training, and evaluation uses a fixed seed for each test sequence (42 plus its index), so the reported v2 results can be regenerated.
-- **v1 (baseline):** random seeds were not fixed. Because the diffusion decoder samples stochastically, repeated v1 generation from the same speech input produces different motion sequences, and metric values may vary slightly between runs.
+- **v1 (baseline):** random seeds were not fixed during training or in the earlier 20-sequence evaluation, so those runs cannot be reproduced exactly. In the final test-set evaluation, v1 also generates each sequence with a fixed seed (42 plus its index), so the reported v1 results can be regenerated from the saved checkpoint.
 
 ## Dependencies
 
-See `requirements.txt` for the full list. The code was run on the Google Colab runtime (August–September 2026) using its pre-installed library versions; only PyRender is pinned (0.1.45).
+See `requirements.txt` for the full list. The code was run on the Google Colab runtime (August–September 2026) using its pre-installed library versions; only PyRender is pinned (0.1.45). Main libraries: PyTorch · librosa · HuggingFace Transformers · NumPy · SciPy · pandas · Matplotlib · smplx · trimesh · PyRender · imageio. Rendering also needs FFmpeg (pre-installed on Colab).
+
 ## Citation
 
 Liu, H., Zhu, Z., Becherini, G., Peng, Y., Su, M., Zhou, Y., Zhe, X., Iwamoto, N., Zheng, B. and Black, M.J. (2024) 'EMAGE: towards unified holistic co-speech gesture generation via expressive masked audio gesture modeling', *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)*, pp. 1144–1154.
