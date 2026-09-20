@@ -93,7 +93,7 @@ No human perceptual evaluation is reported. The methodological implications of b
 
 ## Dependencies
 
-See `requirements.txt` for the full list with exact versions. Main libraries: PyTorch · librosa · HuggingFace Transformers · NumPy · SciPy · pandas · Matplotlib · smplx · trimesh · PyRender · imageio. Rendering also needs FFmpeg (pre-installed on Colab).
+See `requirements.txt` for the full list. The code was run on the Google Colab runtime (August–September 2026) using its pre-installed library versions; only PyRender is pinned (0.1.45). Main libraries: PyTorch · librosa · HuggingFace Transformers · NumPy · SciPy · pandas · Matplotlib · smplx · trimesh · PyRender · imageio. Rendering also needs FFmpeg (pre-installed on Colab).
 
 ## Citation
 
