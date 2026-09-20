@@ -1,0 +1,18 @@
+# Python libraries used by gesture_generation_v2_pipeline.py (Google Colab, NVIDIA T4 GPU)
+# To record exact versions, run in the Colab runtime:
+#   !pip freeze | grep -iE "^(torch|numpy|pandas|scipy|librosa|matplotlib|transformers|huggingface-hub|smplx|trimesh|pyrender|imageio|imageio-ffmpeg)=="
+# and replace the lines below with the output.
+torch
+numpy
+pandas
+scipy
+librosa
+matplotlib
+transformers
+huggingface_hub
+smplx
+trimesh
+pyrender==0.1.45
+imageio
+imageio-ffmpeg
+# System dependency: FFmpeg (pre-installed on Colab)

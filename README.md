@@ -4,6 +4,24 @@ Code accompanying the MSc dissertation *Speech-Driven Gesture Generation for Vir
 
 The system generates 3D co-speech gesture from speech audio and aligned transcriptions using a Transformer speech encoder and a denoising diffusion probabilistic model (DDPM) decoder.
 
+## Versions in this repository
+
+| File | Contents |
+|---|---|
+| `gesture_generation_v2_pipeline.py` | **Improved model (v2), used for the final results.** Time-aligned word features, training, evaluation on the official BEAT2 test split, and rendering of the SMPL-X clips |
+| `gesture_generation_pipeline.ipynb` | Baseline model (v1), described below |
+| `requirements.txt` | Python libraries used |
+
+### Improved model (v2)
+
+- Acoustic features resampled to 30 fps; word-level BERT vectors aligned to motion frames using TextGrid timings
+- Sinusoidal positional encoding; four Transformer decoder layers with temporal self-attention and cross-attention to speech
+- Cosine noise schedule (200 steps), clean-motion prediction, MSE plus velocity loss
+- Official BEAT2 split for the four speakers: 396 training, 24 validation, 52 test sequences
+- AdamW (lr 1 × 10⁻⁴, weight decay 0.01), batch size 32, 200 epochs, best checkpoint at epoch 181, seed 42
+
+The sections below describe the baseline model (v1).
+
 ## Contents
 
 All stages are contained in a single Colab notebook, `gesture_generation_pipeline.ipynb`, organised into the following sections:
@@ -70,11 +88,12 @@ No human perceptual evaluation is reported. The methodological implications of b
 
 ## Reproducibility
 
-Random seeds are not fixed at any stage. Because the diffusion decoder samples stochastically, repeated generation from the same speech input produces different motion sequences, and reported metric values may vary slightly between runs.
+- **v2 (final model):** the seed is fixed at 42 for training, and evaluation uses a fixed seed for each test sequence (42 plus its index), so the reported v2 results can be regenerated.
+- **v1 (baseline):** random seeds were not fixed. Because the diffusion decoder samples stochastically, repeated v1 generation from the same speech input produces different motion sequences, and metric values may vary slightly between runs.
 
 ## Dependencies
 
-PyTorch · librosa · HuggingFace Transformers · NumPy · SciPy
+See `requirements.txt` for the full list with exact versions. Main libraries: PyTorch · librosa · HuggingFace Transformers · NumPy · SciPy · pandas · Matplotlib · smplx · trimesh · PyRender · imageio. Rendering also needs FFmpeg (pre-installed on Colab).
 
 ## Citation
 
