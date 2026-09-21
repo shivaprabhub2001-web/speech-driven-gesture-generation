@@ -20,6 +20,24 @@ The system generates 3D co-speech gesture from speech audio and aligned transcri
 - Official BEAT2 split for the four speakers: 396 training, 24 validation, 52 test sequences
 - AdamW (lr 1 × 10⁻⁴, weight decay 0.01), batch size 32, 200 epochs, best checkpoint at epoch 181, seed 42
 
+`gesture_generation_v2_pipeline.py` is run as Colab cells, in order:
+
+| Cell | Purpose | Dissertation |
+|---|---|---|
+| A | Time-aligned BERT word features from the BEAT2 TextGrids | Section 3.3 |
+| (copy) | Copy cached features from Drive to Colab's local disk | – |
+| B | Model v2 definition and training | Sections 3.4–3.5 |
+| C | v1 vs v2 on the 52 held-out test sequences; training curve | Table 5.2, Figure 5.2 |
+| D | Render the six perceptual-study clips | Section 3.6 |
+| E | Temporal range ratio; paired Wilcoxon tests with rank-biserial r and Holm correction; per-sequence and right-elbow figures | Tables 5.2–5.3, Figures 5.3–5.4 |
+| F | Reference conditions (mismatched speech, unrelated recording, static pose), speech dependence, diversity, FGD over five seeds, paired bootstrap, FGD in 20 principal components | Table 5.4, Section 5.4 |
+| G | Ablation: v2 retrained without the velocity loss | Table 5.4, Section 5.4 |
+| H | Classifier-free guidance: v2 retrained with 10% speech dropout | Section 5.5 |
+| I | Learned FGD (PantoMatrix BEAT2 evaluator); guidance weight chosen on the validation set; guided test outputs | Section 5.5 |
+| J | EMAGE (public audio-only weights) on the same test audio; Table 5.5; speaker-2 comparison | Table 5.5, Section 5.5 |
+
+Cells E–J save their outputs to `results_v2_extra/` and the new weights to `checkpoints_v2_novel/` and `checkpoints_v2_cfg/`. Cells I and J run PantoMatrix's `setup.sh`, which builds its own Python 3.9 environment at `/content/py39`.
+
 The sections below describe the baseline model (v1).
 
 ## Contents
